@@ -792,37 +792,34 @@ hljs.initHighlightingOnLoad();
 
 </section>
 <section data-transition="default" data-transition-speed="default">
-<h3>Mortality Rates</h3>
+<h3>What are Mortality Rates?</h3>
 <div class="slideContent" >
-<p><small></p>
-
 <ul>
-<li>Mortality rates are an indicator or health throughout the world</li>
-<li>Yearly mortality rates are reported for every country/region throughout the world.</li>
+<li>Mortality rates are one primary indicator of health.</li>
+<li>Mortality rates are collected annually for most regions throughout the world.</li>
 <li>I first encountered under-5 mortality rates (U5MR) in
 <a href="http://www.unicef.org/">UNICEF</a>&#39;s annual 
 <a href="http://www.unicef.org/sowc/">State of the World&#39;s Children</a> report. 
 (<a href="http://www.supportunicef.org"><font color="red">Donate</font></a>)</li>
-<li>These rates measure the number of deaths below age 5 per 1,000 births.</li>
-<li>Many developed countries currently have rates below 10, which indicate that less than 1% of children die within their first 5 years of life.</li>
-<li>However, in some countries, rates exceed 200, indicating that over 20% of children die within their first 5 years of life.</li>
-<li>Nevertheless, trends show an overall decrease in mortality rates between 1990 and 2015.
-</small></li>
+<li>U5MR measures the number of deaths below age 5 per 1,000 births.</li>
+<li>Many developed countries currently have rates below 10, which indicate that less than 1% of children die within their first 5 years.</li>
+<li>However, in some countries, rates exceed 100, indicating that over 10% of children die within their first 5 years.</li>
+<li>Nevertheless, mortality rates have decreased overall between 1990 and 2015.</li>
 </ul>
 
 </div>
 
 </section>
 <section data-transition="default" data-transition-speed="default">
-<h3>App Motivation</h3>
+<h3>Why a U5MR App?</h3>
 <div class="slideContent" >
 <ul>
 <li>Gather U5MR from <a href="http://data.worldbank.org/indicator/SH.DYN.MORT">World Bank</a>  either directly or using 
 <a href="https://cran.r-project.org/web/packages/WDI/WDI.pdf">WDI</a> package from 1990
 through 2015 (earlier data available).</li>
-<li>World U5MR 1990: 90.6</li>
-<li>World U5MR 2015: 42.5</li>
-<li>Note the decrease overall and the variation by region in 1990 and in 2015.</li>
+<li>World U5MR: 1990=<strong>90.6</strong>,
+2015=<strong>42.5</strong></li>
+<li>Note the variation by region in 1990 and 2015 and the overall decrease for all measures over 25 years.</li>
 </ul>
 
 <pre><code>  measure value.1990 value.2015
@@ -833,11 +830,15 @@ through 2015 (earlier data available).</li>
 5    Max.   328.20     156.90  
 </code></pre>
 
+<ul>
+<li>App to provide further detail.</li>
+</ul>
+
 </div>
 
 </section>
 <section data-transition="default" data-transition-speed="default">
-<h3>App Features</h3>
+<h3>U5MR App Features</h3>
 <div class="slideContent" >
 <ul>
 <li>Links: <a href="https://dnchelst.shinyapps.io/u5mr-app">u5mr-app</a>, 
@@ -851,7 +852,7 @@ through 2015 (earlier data available).</li>
 <li><strong>Plot</strong> a single country/region to show a general decreasing mortality rate over 25 years. (Selected year highlighted)
 
 <ul>
-<li><small>Try out: south korea, india, or finland.</small></li>
+<li><small>Try out: South Korea, India, or Finland.</small></li>
 </ul></li>
 <li><strong>Quick calculations</strong> for the selected region and year. 
 
