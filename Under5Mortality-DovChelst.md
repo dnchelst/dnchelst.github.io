@@ -27,7 +27,7 @@ App Motivation
 through 2015 (earlier data available).
 - World U5MR 1990: 90.6
 - World U5MR 2015: 42.5
-- Note the decrease overall and the variation by country in 1990 and in 2015.
+- Note the decrease overall and the variation by region in 1990 and in 2015.
 
 ```
   measure value.1990 value.2015
