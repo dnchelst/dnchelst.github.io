@@ -11,7 +11,7 @@ library(dplyr)
 
 What are Mortality Rates?
 ===
-
+<small>
 - Mortality rates are one primary indicator of health.
 - Mortality rates are collected annually for most regions throughout the world.
 - I first encountered under-5 mortality rates (U5MR) in
@@ -19,10 +19,10 @@ What are Mortality Rates?
 [State of the World's Children](http://www.unicef.org/sowc/) report. 
 ([<font color="red">Donate</font>](http://www.supportunicef.org))
 - U5MR measures the number of deaths below age 5 per 1,000 births.
-- Many developed countries currently have rates below 10, which indicate that less than 1% of children die within their first 5 years.
-- However, in some countries, rates exceed 100, indicating that over 10% of children die within their first 5 years.
+- Many developed countries have rates below 10, indicating that less than 1% of children die by age 5.
+- However, in some countries, rates exceed 100, indicating that over 10% of children die by age 5.
 - Nevertheless, mortality rates have decreased overall between 1990 and 2015.
-
+</small>
 
 Why a U5MR App?
 ===
