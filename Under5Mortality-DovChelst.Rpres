@@ -6,7 +6,8 @@ date: `r Sys.Date()`
 ```{r, echo=FALSE}
 mortality <- read.csv("u5mr.csv")
 mortality.world <- read.csv("u5mr-world.csv")
-library(dplyr)
+library(tidyverse)
+library(knitr)
 ```
 
 What are Mortality Rates?
@@ -21,36 +22,30 @@ What are Mortality Rates?
 - U5MR measures the number of deaths below age 5 per 1,000 births.
 - Many developed countries have rates below 10, indicating that less than 1% of children die by age 5.
 - However, in some countries, rates exceed 100, indicating that over 10% of children die by age 5.
-- Nevertheless, mortality rates have decreased overall between 1990 and 2015.
+- Nevertheless, mortality rates have decreased overall between 1990 and 2018.
 </small>
 
 Why a U5MR App?
 ===
 - Gather U5MR from [World Bank](http://data.worldbank.org/indicator/SH.DYN.MORT)  either directly or using 
 [WDI](https://cran.r-project.org/web/packages/WDI/WDI.pdf) package from 1990
-through 2015 (earlier data available).
+through 2018 (earlier data available).
 - World U5MR: 1990=__`r with(mortality.world, value[year==1990])`__,
-2015=__`r with(mortality.world, value[year==2015])`__
-- Note the variation by region in 1990 and 2015 and the overall decrease for all measures over 25 years.
+2018=__`r with(mortality.world, value[year==2018])`__
+- Note the variation by region in 1990 and 2018 and the overall decrease for all measures over 29 years.
 ```{r, echo=FALSE}
-SummaryYear <- function(year1){
-  summary1 <- mortality %>% 
-    filter(year==year1, !is.na(value)) %>%
-    select(value) %>%
-    summary(na.rm=TRUE) %>%
-    as.data.frame %>%
-    select(value=Freq) %>%
-    mutate(measure = gsub("(.*?)\\s*:\\s*(.*)", "\\1", value),
-           value = gsub("(.*?)\\s*:\\s*(.*)", "\\2", value))
-  return(summary1)
-}
-summary.1990 <- SummaryYear(1990)
-summary.2015 <- SummaryYear(2015)
-summary2 <- merge(rename(summary.1990, value.1990=value),
-                  rename(summary.2015, value.2015=value)) %>%
-  arrange(as.numeric(value.1990)) %>%
-  filter(measure !="Mean")
-print(summary2)
+measures <- c("Minimum", "Q1", "Median", "Q3", "Maximum")
+summary2 <- mortality %>% 
+  filter(year %in% c(1990, 2018)) %>% 
+  group_by(year) %>% 
+  summarise_at(vars(value), quantile) %>% 
+  mutate(measure = ordered(measures, measures)) %>% 
+  ungroup %>% 
+  mutate(value = round(value, 1), 
+         year = paste0("year.", year)) %>% 
+  spread(year, value) 
+kable(summary2, col.names = str_to_title(names(summary2)))
+#print(summary2)
 ```
 - App to provide further detail.
 
@@ -61,11 +56,12 @@ U5MR App Features
 - **Map** a single year to show variation throughout the world.
   - <small>Western Europe and Scandinavia show low mortality rates.</small>
   - <small>Portions of Africa show high mortality rates.</small>
-- **Plot** a single country/region to show a general decreasing mortality rate over 25 years. (Selected year highlighted)
+- **Plot** a single country/region to show a general decreasing mortality rate 
+over 29 years. (Selected year highlighted)
   - <small>Try out: South Korea, India, or Finland.</small>
 - **Quick calculations** for the selected region and year. 
   - <small> _Rank_  is also shown with 1 as the lowest mortality rate.</small>
-  - <small> _Percent change_  between 1990 and 2015 is also shown.</small>
+  - <small> _Percent change_  between 1990 and 2018 is also shown.</small>
 
 Concluding Thoughts
 ===
@@ -74,5 +70,6 @@ Concluding Thoughts
 - Warning 1: Collection may be unreliable for some regions.
 - Warning 2: Data may omit regions with changed boundaries or names.
 - Warning 3: App generates errors but works: ("data not available for Taiwan...")
-- R packages: WDI, choroplethr, shiny, ggplot2, dplyr
-- **While the R packages are nice, the people who assembled U5MR data for over half a century deserve most of the credit.**
+- R packages: WDI, choroplethr, shiny, tidyverse
+- **While the R packages are nice, the people who assembled U5MR data for over 
+half a century deserve most of the credit.**
