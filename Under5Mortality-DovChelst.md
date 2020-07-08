@@ -2,7 +2,7 @@ Child Mortality Worldwide
 ===
 author: Dov Chelst
 transition: rotate
-date: 2020-06-26
+date: 2020-07-08
 
 
 What are Mortality Rates?
@@ -59,6 +59,6 @@ Concluding Thoughts
 - Warning 1: Collection may be unreliable for some regions.
 - Warning 2: Data may omit regions with changed boundaries or names.
 - Warning 3: App generates errors but works: ("data not available for Taiwan...")
-- R packages: WDI, choroplethr, shiny, tidyverse
+- R packages: WDI, leaflet, shiny, tidyverse
 - **While the R packages are nice, the people who assembled U5MR data for over 
 half a century deserve most of the credit.**
